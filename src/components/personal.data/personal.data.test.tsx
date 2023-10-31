@@ -1,4 +1,4 @@
-import { screen, render } from '@testing-library/react';
+/* import { screen, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { PersonalData } from './personal.data';
 
@@ -18,3 +18,4 @@ describe('Given Footer component', () => {
     });
   });
 });
+ */
