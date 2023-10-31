@@ -1,12 +1,6 @@
-import { PersonalData } from "../personal.data/personal.data";
+import { Form } from '../form/form';
 
 export function App() {
+  return <Form></Form>;
 
-
-
-  return (
-    <div>
-      <PersonalData></PersonalData>
-    </div>
-  );
 }

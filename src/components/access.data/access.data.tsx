@@ -1,33 +1,22 @@
+
 import { SyntheticEvent, useState } from 'react';
 import { User } from '../../models/type'
 import React from 'react';
 
-export function AccessData() {
-  const initialState: User = {
-    name: '',
-    lastName: '',
-    birthdate: '',
-    gender: '',
-    email: '',
-    newsLetter: false,
-    userName: '',
-    password: '',
-    accountType: '',
+export function AccessData({ nextStep, previousStep }) {
+  const handleNext = (event: SyntheticEvent) => {
+    event.preventDefault();
+    nextStep();
   };
-
-  const [userState, setUserState] = useState(initialState);
-
-  const handleChange = (ev: SyntheticEvent) => {
-    const control = ev.target as HTMLInputElement;
-    const value = control.type === 'checkbox' ? control.checked : control.value;
-    const name = control.name;
-    setUserState({ ...userState, [name]: value });
-    console.log(userState)
+  const handlePrevious = (event: SyntheticEvent) => {
+    event.preventDefault();
+    previousStep();
   };
-
-
   return (
-    <form className="user-form">
+    <>
+      <p>Access Data</p>
+      
+      <form className="user-form">
     <fieldset>
       <legend>User data</legend>
       <div className="form-control">
@@ -67,8 +56,9 @@ export function AccessData() {
       <select name="accountType" value="business"></select>
     </fieldset>
     </form>
+      
+      <button onClick={handlePrevious}>Previous</button>
+      <button onClick={handleNext}>Next</button>
+    </>
   );
- 
 }
-
-

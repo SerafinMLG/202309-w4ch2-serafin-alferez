@@ -1,31 +1,16 @@
-import { SyntheticEvent, useState } from 'react';
-import { User } from '../../models/type'
+import { SyntheticEvent } from 'react';
+        
 
-export function PersonalData() {
-  const initialState: User = {
-    name: '',
-    lastName: '',
-    birthdate: '',
-    gender: '',
-    email: '',
-    newsLetter: false,
-    userName: '',
-    password: '',
-    accountType: '',
+export function PersonalData({ nextStep }) {
+  const handleNext = (event: SyntheticEvent) => {
+    event.preventDefault();
+    nextStep();
   };
-
-  const [userState, setUserState] = useState(initialState);
-
-  const handleChange = (ev: SyntheticEvent) => {
-    const control = ev.target as HTMLInputElement;
-    const value = control.type === 'checkbox' ? control.checked : control.value;
-    const name = control.name;
-    setUserState({ ...userState, [name]: value });
-    console.log(userState)
-  };
-
   return (
-    <form className="user-form" >
+    <>
+      <p>Personal Data</p>
+      
+      <form className="user-form" >
       <fieldset>
         <legend>User data</legend>
         <div className="form-control">
@@ -87,5 +72,7 @@ export function PersonalData() {
       </div>
       <button type="submit">Send</button>
     </form>
-  );
+      
+      <button onClick={handleNext}>Next</button>
+    </>)
 }
